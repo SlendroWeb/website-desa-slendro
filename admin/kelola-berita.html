@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kelola Berita - Website Desa</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="font-[Inter] bg-gray-50">
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        <aside class="w-64 bg-green-900 text-white flex flex-col">
+            <div class="p-6 border-b border-green-800">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center">
+                        <i class="fas fa-tree text-green-700"></i>
+                    </div>
+                    <div>
+                        <h2 class="font-bold">ADMIN DESA</h2>
+                        <p class="text-xs text-green-300">Panel Pengelolaan</p>
+                    </div>
+                </div>
+            </div>
+            <nav class="flex-1 p-4 space-y-2">
+                <a href="dashboard.html" class="flex items-center gap-3 px-4 py-2.5 hover:bg-green-800 rounded-lg transition">
+                    <i class="fas fa-home"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="kelola-berita.html" class="flex items-center gap-3 px-4 py-2.5 bg-green-800 rounded-lg">
+                    <i class="fas fa-newspaper"></i>
+                    <span>Kelola Berita</span>
+                </a>
+                <a href="kelola-layanan.html" class="flex items-center gap-3 px-4 py-2.5 hover:bg-green-800 rounded-lg transition">
+                    <i class="fas fa-concierge-bell"></i>
+                    <span>Kelola Layanan</span>
+                </a>
+                <a href="../index.html" class="flex items-center gap-3 px-4 py-2.5 hover:bg-green-800 rounded-lg transition">
+                    <i class="fas fa-globe"></i>
+                    <span>Lihat Website</span>
+                </a>
+            </nav>
+            <div class="p-4 border-t border-green-800">
+                <button onclick="logout()" class="flex items-center gap-3 px-4 py-2.5 w-full hover:bg-red-600 rounded-lg transition">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Keluar</span>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 overflow-y-auto">
+            <header class="bg-white shadow-sm px-8 py-4 flex justify-between items-center">
+                <div>
+                    <h1 class="text-2xl font-bold text-gray-900">Kelola Berita</h1>
+                    <p class="text-gray-600">Tambah, edit, dan hapus berita desa</p>
+                </div>
+                <button onclick="openModalTambah()" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg font-medium flex items-center gap-2">
+                    <i class="fas fa-plus"></i>
+                    Tambah Berita
+                </button>
+            </header>
+
+            <div class="p-8">
+                <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+                    <div class="overflow-x-auto">
+                        <table class="w-full">
+                            <thead class="bg-gray-50 border-b">
+                                <tr>
+                                    <th class="text-left px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">Berita</th>
+                                    <th class="text-left px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">Kategori</th>
+                                    <th class="text-left px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">Tanggal</th>
+                                    <th class="text-left px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">Penulis</th>
+                                    <th class="text-right px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y" id="beritaTable">
+                                <tr>
+                                    <td colspan="5" class="px-6 py-8 text-center text-gray-500">Memuat...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal Tambah/Edit Berita -->
+    <div id="modalBerita" class="hidden fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+        <div class="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="p-6 border-b flex justify-between items-center">
+                <h2 class="text-xl font-bold text-gray-900" id="modalTitle">Tambah Berita</h2>
+                <button onclick="closeModal()" class="text-gray-400 hover:text-gray-600">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <form id="beritaForm" class="p-6 space-y-4">
+                <input type="hidden" id="beritaId">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Judul Berita</label>
+                    <input type="text" id="judul" required
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none">
+                </div>
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Kategori</label>
+                        <select id="kategori" required
+                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none">
+                            <option value="Kegiatan">Kegiatan</option>
+                            <option value="Pembangunan">Pembangunan</option>
+                            <option value="Pertanian">Pertanian</option>
+                            <option value="Pendidikan">Pendidikan</option>
+                            <option value="Pengumuman">Pengumuman</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Tanggal</label>
+                        <input type="date" id="tanggal" required
+                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Penulis</label>
+                    <input type="text" id="penulis" value="Admin Desa" required
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Gambar Berita</label>
+                    <div id="dropzone" class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-green-500 hover:bg-green-50 transition cursor-pointer">
+                        <input type="file" id="gambarFile" accept="image/*" class="hidden">
+                        <input type="hidden" id="gambar" required>
+                        <div id="dropzoneContent">
+                            <i class="fas fa-cloud-upload-alt text-3xl text-gray-400 mb-2"></i>
+                            <p class="text-gray-600 mb-1">Drag & drop gambar atau <span class="text-green-600 font-medium">klik untuk pilih file</span></p>
+                            <p class="text-xs text-gray-500">Format: JPG, PNG, JPEG, WebP (Max 2MB)</p>
+                        </div>
+                        <div id="previewContainer" class="hidden">
+                            <img id="previewImage" src="" alt="Preview" class="max-h-48 mx-auto rounded-lg mb-2">
+                            <p class="text-sm text-green-600 font-medium">Gambar siap digunakan</p>
+                            <button type="button" onclick="removeImage()" class="text-sm text-red-600 hover:text-red-700 mt-1">
+                                <i class="fas fa-times mr-1"></i>Ganti Gambar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Isi Berita</label>
+                    <textarea id="isi" rows="6" required
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none"
+                        placeholder="Tulis isi berita..."></textarea>
+                </div>
+                <div class="flex gap-3 pt-4">
+                    <button type="submit" class="flex-1 bg-green-600 hover:bg-green-700 text-white py-2.5 rounded-lg font-semibold transition">
+                        Simpan
+                    </button>
+                    <button type="button" onclick="closeModal()" class="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-700 py-2.5 rounded-lg font-semibold transition">
+                        Batal
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="../config.js"></script>
+    <script>
+        if (localStorage.getItem('adminLoggedIn') !== 'true') {
+            window.location.href = 'login.html';
+        }
+
+        function logout() {
+            localStorage.removeItem('adminLoggedIn');
+            localStorage.removeItem('adminUser');
+            window.location.href = 'login.html';
+        }
+
+        let editMode = false;
+
+        async function loadBerita() {
+            try {
+                const apiUrl = window.API_URL || 'http://localhost:3000';
+                const response = await fetch(apiUrl + '/berita?_sort=id&_order=desc');
+                const berita = await response.json();
+                const table = document.getElementById('beritaTable');
+                
+                if (berita.length === 0) {
+                    table.innerHTML = '<tr><td colspan="5" class="px-6 py-8 text-center text-gray-500">Belum ada berita</td></tr>';
+                    return;
+                }
+
+                table.innerHTML = berita.map(b => `
+                    <tr class="hover:bg-gray-50">
+                        <td class="px-6 py-4">
+                            <div class="flex items-center gap-3">
+                                <img src="${b.gambar}" alt="${b.judul}" class="w-12 h-12 rounded-lg object-cover" onerror="this.src='https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400'">
+                                <div class="max-w-xs">
+                                    <p class="font-medium text-gray-900 line-clamp-1">${b.judul}</p>
+                                    <p class="text-sm text-gray-500 line-clamp-1">${b.slug}</p>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="px-6 py-4">
+                            <span class="px-2 py-1 bg-blue-100 text-blue-700 text-xs rounded-full">${b.kategori}</span>
+                        </td>
+                        <td class="px-6 py-4 text-sm text-gray-600">${b.tanggal}</td>
+                        <td class="px-6 py-4 text-sm text-gray-600">${b.penulis}</td>
+                        <td class="px-6 py-4 text-right space-x-2">
+                            <button onclick='editBerita(${JSON.stringify(b).replace(/'/g, "&apos;")})' class="text-blue-600 hover:text-blue-700">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button onclick="hapusBerita(${b.id})" class="text-red-600 hover:text-red-700">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+                `).join('');
+            } catch (error) {
+                console.error(error);
+                document.getElementById('beritaTable').innerHTML = '<tr><td colspan="5" class="px-6 py-8 text-center text-red-500">Error! Pastikan json-server berjalan</td></tr>';
+            }
+        }
+
+        function openModalTambah() {
+            editMode = false;
+            document.getElementById('modalTitle').textContent = 'Tambah Berita';
+            document.getElementById('beritaForm').reset();
+            document.getElementById('beritaId').value = '';
+            document.getElementById('penulis').value = 'Admin Desa';
+            document.getElementById('tanggal').value = new Date().toISOString().split('T')[0];
+            removeImage();
+            document.getElementById('modalBerita').classList.remove('hidden');
+        }
+
+        function editBerita(berita) {
+            editMode = true;
+            document.getElementById('modalTitle').textContent = 'Edit Berita';
+            document.getElementById('beritaId').value = berita.id;
+            document.getElementById('judul').value = berita.judul;
+            document.getElementById('kategori').value = berita.kategori;
+            document.getElementById('tanggal').value = berita.tanggal;
+            document.getElementById('penulis').value = berita.penulis;
+            document.getElementById('gambar').value = berita.gambar;
+            if (berita.gambar) {
+                document.getElementById('previewImage').src = berita.gambar;
+                document.getElementById('dropzoneContent').classList.add('hidden');
+                document.getElementById('previewContainer').classList.remove('hidden');
+            }
+            document.getElementById('isi').value = berita.isi;
+            document.getElementById('modalBerita').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('modalBerita').classList.add('hidden');
+            removeImage();
+        }
+
+        // Drag & Drop Image
+        const dropzone = document.getElementById('dropzone');
+        const fileInput = document.getElementById('gambarFile');
+
+        dropzone.addEventListener('click', () => fileInput.click());
+
+        dropzone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropzone.classList.add('border-green-500', 'bg-green-50');
+        });
+
+        dropzone.addEventListener('dragleave', () => {
+            dropzone.classList.remove('border-green-500', 'bg-green-50');
+        });
+
+        dropzone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropzone.classList.remove('border-green-500', 'bg-green-50');
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                handleImage(files[0]);
+            }
+        });
+
+        fileInput.addEventListener('change', (e) => {
+            if (e.target.files.length > 0) {
+                handleImage(e.target.files[0]);
+            }
+        });
+
+        function handleImage(file) {
+            if (file.size > 2 * 1024 * 1024) {
+                alert('Ukuran gambar maksimal 2MB!');
+                return;
+            }
+            if (!file.type.startsWith('image/')) {
+                alert('File harus berupa gambar!');
+                return;
+            }
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const base64 = e.target.result;
+                document.getElementById('gambar').value = base64;
+                document.getElementById('previewImage').src = base64;
+                document.getElementById('dropzoneContent').classList.add('hidden');
+                document.getElementById('previewContainer').classList.remove('hidden');
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function removeImage() {
+            document.getElementById('gambar').value = '';
+            document.getElementById('gambarFile').value = '';
+            document.getElementById('dropzoneContent').classList.remove('hidden');
+            document.getElementById('previewContainer').classList.add('hidden');
+        }
+
+        function slugify(text) {
+            return text.toString().toLowerCase()
+                .replace(/\s+/g, '-')
+                .replace(/[^\w\-]+/g, '')
+                .replace(/\-\-+/g, '-')
+                .replace(/^-+/, '')
+                .replace(/-+$/, '');
+        }
+
+        document.getElementById('beritaForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const id = document.getElementById('beritaId').value;
+            const beritaData = {
+                judul: document.getElementById('judul').value,
+                slug: slugify(document.getElementById('judul').value),
+                kategori: document.getElementById('kategori').value,
+                tanggal: document.getElementById('tanggal').value,
+                penulis: document.getElementById('penulis').value,
+                gambar: document.getElementById('gambar').value,
+                isi: document.getElementById('isi').value
+            };
+
+            try {
+                const apiUrl = window.API_URL || 'http://localhost:3000';
+                if (editMode && id) {
+                    await fetch(apiUrl + `/berita/${id}`, {
+                        method: 'PUT',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(beritaData)
+                    });
+                    alert('Berita berhasil diperbarui!');
+                } else {
+                    const response = await fetch(apiUrl + '/berita');
+                    const berita = await response.json();
+                    const newId = berita.length > 0 ? Math.max(...berita.map(b => b.id)) + 1 : 1;
+                    await fetch(apiUrl + '/berita', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ id: newId, ...beritaData })
+                    });
+                    alert('Berita berhasil ditambahkan!');
+                }
+                closeModal();
+                loadBerita();
+            } catch (error) {
+                alert('Error! Pastikan json-server berjalan');
+            }
+        });
+
+        async function hapusBerita(id) {
+            if (confirm('Yakin ingin menghapus berita ini?')) {
+                try {
+                    const apiUrl = window.API_URL || 'http://localhost:3000';
+                    await fetch(apiUrl + `/berita/${id}`, {
+                        method: 'DELETE'
+                    });
+                    alert('Berita berhasil dihapus!');
+                    loadBerita();
+                } catch (error) {
+                    alert('Error!');
+                }
+            }
+        }
+
+        // Check if coming from dashboard
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('action') === 'tambah') {
+            openModalTambah();
+        }
+
+        loadBerita();
+    </script>
+</body>
+
+</html>

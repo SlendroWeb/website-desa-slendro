@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Admin - Website Desa</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="font-[Inter] bg-gray-50">
+    <!-- Sidebar -->
+    <div class="flex h-screen">
+        <aside class="w-64 bg-green-900 text-white flex flex-col">
+            <div class="p-6 border-b border-green-800">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center">
+                        <i class="fas fa-tree text-green-700"></i>
+                    </div>
+                    <div>
+                        <h2 class="font-bold">ADMIN DESA</h2>
+                        <p class="text-xs text-green-300">Panel Pengelolaan</p>
+                    </div>
+                </div>
+            </div>
+            <nav class="flex-1 p-4 space-y-2">
+                <a href="dashboard.html" class="flex items-center gap-3 px-4 py-2.5 bg-green-800 rounded-lg">
+                    <i class="fas fa-home"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="kelola-berita.html" class="flex items-center gap-3 px-4 py-2.5 hover:bg-green-800 rounded-lg transition">
+                    <i class="fas fa-newspaper"></i>
+                    <span>Kelola Berita</span>
+                </a>
+                <a href="kelola-layanan.html" class="flex items-center gap-3 px-4 py-2.5 hover:bg-green-800 rounded-lg transition">
+                    <i class="fas fa-concierge-bell"></i>
+                    <span>Kelola Layanan</span>
+                </a>
+                <a href="../index.html" class="flex items-center gap-3 px-4 py-2.5 hover:bg-green-800 rounded-lg transition">
+                    <i class="fas fa-globe"></i>
+                    <span>Lihat Website</span>
+                </a>
+            </nav>
+            <div class="p-4 border-t border-green-800">
+                <button onclick="logout()" class="flex items-center gap-3 px-4 py-2.5 w-full hover:bg-red-600 rounded-lg transition">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Keluar</span>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 overflow-y-auto">
+            <header class="bg-white shadow-sm px-8 py-4 flex justify-between items-center">
+                <div>
+                    <h1 class="text-2xl font-bold text-gray-900">Dashboard</h1>
+                    <p class="text-gray-600">Selamat datang di Panel Admin Website Desa</p>
+                </div>
+                <div class="flex items-center gap-3">
+                    <div class="text-right">
+                        <p class="font-medium text-gray-900" id="adminName">Administrator</p>
+                        <p class="text-sm text-gray-500">Administrator Desa</p>
+                    </div>
+                    <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
+                        <i class="fas fa-user text-green-600"></i>
+                    </div>
+                </div>
+            </header>
+
+            <div class="p-8">
+                <!-- Stats Cards -->
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+                    <div class="bg-white rounded-xl shadow-sm p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-newspaper text-blue-600 text-xl"></i>
+                            </div>
+                            <span class="text-3xl font-bold text-gray-900" id="countBerita">0</span>
+                        </div>
+                        <h3 class="text-gray-600 font-medium">Total Berita</h3>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-sm p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-envelope text-orange-600 text-xl"></i>
+                            </div>
+                            <span class="text-3xl font-bold text-gray-900" id="countPengaduan">0</span>
+                        </div>
+                        <h3 class="text-gray-600 font-medium">Total Pengaduan</h3>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-sm p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-clock text-red-600 text-xl"></i>
+                            </div>
+                            <span class="text-3xl font-bold text-gray-900" id="countMenunggu">0</span>
+                        </div>
+                        <h3 class="text-gray-600 font-medium">Pengaduan Menunggu</h3>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="bg-white rounded-xl shadow-sm p-6 mb-8">
+                    <h2 class="text-lg font-bold text-gray-900 mb-4">Aksi Cepat</h2>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <a href="kelola-berita.html?action=tambah"
+                            class="flex items-center gap-3 p-4 border-2 border-dashed border-gray-300 rounded-lg hover:border-green-500 hover:bg-green-50 transition group">
+                            <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center group-hover:bg-green-600 transition">
+                                <i class="fas fa-plus text-green-600 group-hover:text-white"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-gray-900">Tambah Berita Baru</h3>
+                                <p class="text-sm text-gray-600">Buat artikel berita desa</p>
+                            </div>
+                        </a>
+                        <a href="kelola-layanan.html"
+                            class="flex items-center gap-3 p-4 border-2 border-dashed border-gray-300 rounded-lg hover:border-orange-500 hover:bg-orange-50 transition group">
+                            <div class="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center group-hover:bg-orange-600 transition">
+                                <i class="fas fa-tasks text-orange-600 group-hover:text-white"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-gray-900">Kelola Pengaduan</h3>
+                                <p class="text-sm text-gray-600">Lihat dan tanggapi pengaduan</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Recent -->
+                <div class="grid lg:grid-cols-2 gap-6">
+                    <div class="bg-white rounded-xl shadow-sm">
+                        <div class="p-6 border-b flex justify-between items-center">
+                            <h2 class="text-lg font-bold text-gray-900">Berita Terbaru</h2>
+                            <a href="kelola-berita.html" class="text-green-600 hover:text-green-700 text-sm font-medium">Lihat Semua</a>
+                        </div>
+                        <div class="divide-y" id="recentBerita">
+                            <div class="p-6 text-center text-gray-500">Memuat...</div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-sm">
+                        <div class="p-6 border-b flex justify-between items-center">
+                            <h2 class="text-lg font-bold text-gray-900">Pengaduan Terbaru</h2>
+                            <a href="kelola-layanan.html" class="text-green-600 hover:text-green-700 text-sm font-medium">Lihat Semua</a>
+                        </div>
+                        <div class="divide-y" id="recentPengaduan">
+                            <div class="p-6 text-center text-gray-500">Memuat...</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../config.js"></script>
+    <script>
+        // Check login
+        if (localStorage.getItem('adminLoggedIn') !== 'true') {
+            window.location.href = 'login.html';
+        }
+
+        const adminUser = JSON.parse(localStorage.getItem('adminUser') || '{}');
+        if (adminUser.nama) {
+            document.getElementById('adminName').textContent = adminUser.nama;
+        }
+
+        function logout() {
+            localStorage.removeItem('adminLoggedIn');
+            localStorage.removeItem('adminUser');
+            window.location.href = 'login.html';
+        }
+
+        async function loadStats() {
+            try {
+                const apiUrl = window.API_URL || 'http://localhost:3000';
+                const [beritaRes, pengaduanRes] = await Promise.all([
+                    fetch(apiUrl + '/berita'),
+                    fetch(apiUrl + '/pengaduan')
+                ]);
+                const berita = await beritaRes.json();
+                const pengaduan = await pengaduanRes.json();
+
+                document.getElementById('countBerita').textContent = berita.length;
+                document.getElementById('countPengaduan').textContent = pengaduan.length;
+                document.getElementById('countMenunggu').textContent = pengaduan.filter(p => p.status === 'Menunggu').length;
+
+                // Recent berita
+                const recentBerita = berita.slice(-3).reverse();
+                const beritaContainer = document.getElementById('recentBerita');
+                if (recentBerita.length === 0) {
+                    beritaContainer.innerHTML = '<div class="p-6 text-center text-gray-500">Belum ada berita</div>';
+                } else {
+                    beritaContainer.innerHTML = recentBerita.map(b => `
+                        <div class="p-4 hover:bg-gray-50">
+                            <h3 class="font-medium text-gray-900 mb-1 line-clamp-1">${b.judul}</h3>
+                            <p class="text-sm text-gray-500">${b.tanggal} • ${b.kategori}</p>
+                        </div>
+                    `).join('');
+                }
+
+                // Recent pengaduan
+                const recentPengaduan = pengaduan.slice(-3).reverse();
+                const pengaduanContainer = document.getElementById('recentPengaduan');
+                if (recentPengaduan.length === 0) {
+                    pengaduanContainer.innerHTML = '<div class="p-6 text-center text-gray-500">Belum ada pengaduan</div>';
+                } else {
+                    pengaduanContainer.innerHTML = recentPengaduan.map(p => `
+                        <div class="p-4 hover:bg-gray-50">
+                            <div class="flex justify-between items-start mb-1">
+                                <h3 class="font-medium text-gray-900">${p.nama}</h3>
+                                <span class="text-xs px-2 py-1 rounded-full ${getStatusColor(p.status)}">${p.status}</span>
+                            </div>
+                            <p class="text-sm text-gray-500 line-clamp-1">${p.jenisLayanan}</p>
+                        </div>
+                    `).join('');
+                }
+            } catch (error) {
+                console.error(error);
+            }
+        }
+
+        function getStatusColor(status) {
+            if (status === 'Menunggu') return 'bg-yellow-100 text-yellow-700';
+            if (status === 'Diproses') return 'bg-blue-100 text-blue-700';
+            if (status === 'Selesai') return 'bg-green-100 text-green-700';
+            return 'bg-gray-100 text-gray-700';
+        }
+
+        loadStats();
+    </script>
+</body>
+
+</html>

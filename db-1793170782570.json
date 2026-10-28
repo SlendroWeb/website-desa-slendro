@@ -1,0 +1,43 @@
+{
+  "berita": [
+    {
+      "id": 1,
+      "judul": "Gotong Royong Bersih Desa",
+      "slug": "gotong-royong-bersih-desa",
+      "kategori": "Kegiatan",
+      "tanggal": "2025-10-01",
+      "penulis": "Admin Desa",
+      "gambar": "https://images.unsplash.com/photo-1559027615-cd4628902d4a?q=80&w=2074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "isi": "<p>Warga Desa [Nama Desa] melaksanakan kegiatan gotong royong membersihkan lingkungan desa dalam rangka menjaga kebersihan dan keindahan lingkungan.</p><p>Kegiatan ini diikuti oleh seluruh warga dari berbagai kalangan, mulai dari anak-anak, remaja, hingga orang tua. Semangat gotong royong yang masih kuat menjadi ciri khas masyarakat desa kami.</p>"
+    },
+    {
+      "id": 2,
+      "judul": "Panen Raya Desa Meningkatkan Kesejahteraan",
+      "slug": "panen-raya-desa-meningkatkan-kesejahteraan",
+      "kategori": "Pertanian",
+      "tanggal": "2025-09-28",
+      "penulis": "Admin Desa",
+      "gambar": "https://images.unsplash.com/photo-1464226184884-fa280b87c399?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "isi": "<p>Hasil panen tahun ini menunjukkan peningkatan yang significant berkat program pertanian desa dan kerja sama para petani.</p><p>Pemerintah Desa mengapresiasi kerja keras para petani yang telah berjuang untuk meningkatkan produktivitas pertanian di desa.</p>"
+    },
+    {
+      "id": 3,
+      "judul": "Pelatihan Kewirausahaan untuk Pemuda Desa",
+      "slug": "pelatihan-kewirausahaan-pemuda-desa",
+      "kategori": "Pendidikan",
+      "tanggal": "2025-09-25",
+      "penulis": "Admin Desa",
+      "gambar": "https://images.unsplash.com/photo-1511632765486-a01980e01a18?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "isi": "<p>Pemerintah Desa mengadakan pelatihan kewirausahaan bagi generasi muda untuk meningkatkan keterampilan dan menciptakan lapangan kerja mandiri.</p><p>Pelatihan ini meliputi berbagai materi seperti manajemen usaha, pemasaran digital, dan pengelolangan keuangan usaha.</p>"
+    }
+  ],
+  "pengaduan": [],
+  "users": [
+    {
+      "id": 1,
+      "username": "admin",
+      "password": "admin123",
+      "nama": "Administrator Desa"
+    }
+  ]
+}

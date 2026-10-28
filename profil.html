@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil Desa - Desa Desa Slendro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="font-[Inter] text-gray-800 bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center gap-3">
+                    <div class="flex items-center gap-2">
+                        <img src="assets/logo/logo-sragen.png" alt="Logo Kabupaten Sragen" class="w-12 h-12 object-contain">
+                        <img src="assets/logo/logo-slendro.png" alt="Logo Desa Slendro" class="w-12 h-12 object-contain">
+                    </div>
+                    <div>
+                        <h1 class="text-lg md:text-xl font-bold text-green-700">DESA SLENDRO</h1>
+                        <p class="text-xs md:text-sm text-gray-500">Kec. Gesi, Kab. Sragen, Prov. Jawa Tengah</p>
+                    </div>
+                </div>
+                <nav class="hidden lg:flex items-center gap-6">
+                    <a href="index.html" class="text-gray-700 font-medium hover:text-green-600">Beranda</a>
+                    <a href="profil.html" class="text-green-700 font-medium hover:text-green-600">Profil Desa</a>
+                    <a href="pemerintahan.html" class="text-gray-700 font-medium hover:text-green-600">Pemerintahan</a>
+                    <a href="layanan.html" class="text-gray-700 font-medium hover:text-green-600">Layanan</a>
+                    <a href="berita.html" class="text-gray-700 font-medium hover:text-green-600">Berita</a>
+                    <a href="galeri.html" class="text-gray-700 font-medium hover:text-green-600">Galeri</a>
+                    <a href="kontak.html" class="text-gray-700 font-medium hover:text-green-600">Kontak</a>
+                </nav>
+                <button id="mobileMenuBtn" class="lg:hidden text-gray-700 text-2xl">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        <div id="mobileMenu" class="lg:hidden hidden border-t">
+            <nav class="flex flex-col px-4 py-2">
+                <a href="index.html" class="py-2 text-gray-700">Beranda</a>
+                <a href="profil.html" class="py-2 text-green-700 font-medium">Profil Desa</a>
+                <a href="pemerintahan.html" class="py-2 text-gray-700">Pemerintahan</a>
+                <a href="layanan.html" class="py-2 text-gray-700">Layanan</a>
+                <a href="berita.html" class="py-2 text-gray-700">Berita</a>
+                <a href="galeri.html" class="py-2 text-gray-700">Galeri</a>
+                <a href="kontak.html" class="py-2 text-gray-700">Kontak</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="bg-green-700 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h1 class="text-3xl md:text-4xl font-bold mb-2">Profil Desa</h1>
+            <nav class="flex items-center gap-2 text-green-200">
+                <a href="index.html" class="hover:text-white">Beranda</a>
+                <i class="fas fa-chevron-right text-xs"></i>
+                <span class="text-white">Profil Desa</span>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Profil Content -->
+    <section class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-3 gap-8">
+                <div class="lg:col-span-2 space-y-8">
+                    <!-- Sejarah -->
+                    <div class="bg-white rounded-xl shadow-sm p-6 md:p-8">
+                        <h2 class="text-2xl font-bold mb-4 text-gray-900 flex items-center gap-3">
+                            <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-history text-green-600"></i>
+                            </div>
+                            Sejarah Desa
+                        </h2>
+                        <div class="space-y-4 text-gray-700 leading-relaxed">
+                            <p>
+                                Desa Desa Slendro merupakan salah satu desa yang terletak di Kecamatan Gesi,
+                                Kabupaten Sragen. Sejarah berdirinya desa ini tidak terlepas dari perjalanan
+                                masyarakat yang gigih dalam membuka lahan dan membangun permukiman.
+                            </p>
+                            <p>
+                                Pada awalnya, kawasan ini merupakan hutan belantara yang kemudian dibuka oleh sekelompok
+                                pendatang yang berasal dari berbagai daerah. Mereka bekerja sama dengan semangat gotong
+                                royong untuk membuka lahan pertanian, membangun tempat tinggal, dan membentuk masyarakat
+                                yang teratur.
+                            </p>
+                            <p>
+                                Seiring dengan perkembangan waktu, Desa Desa Slendro terus berkembang menjadi desa yang
+                                mandiri dengan berbagai potensi di bidang pertanian, peternakan, dan kerajinan tangan.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Visi Misi -->
+                    <div class="bg-white rounded-xl shadow-sm p-6 md:p-8">
+                        <h2 class="text-2xl font-bold mb-4 text-gray-900 flex items-center gap-3">
+                            <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-bullseye text-blue-600"></i>
+                            </div>
+                            Visi dan Misi
+                        </h2>
+                        <div class="mb-6">
+                            <h3 class="text-xl font-semibold mb-3 text-green-700">Visi</h3>
+                            <p class="text-gray-700 leading-relaxed bg-green-50 p-4 rounded-lg border-l-4 border-green-600">
+                                "Terwujudnya Desa Desa Slendro yang Maju, Mandiri, Sejahtera, Berkeadilan, dan Berbudaya
+                                Berlandaskan Gotong Royong"
+                            </p>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold mb-3 text-blue-700">Misi</h3>
+                            <ol class="space-y-3">
+                                <li class="flex gap-3">
+                                    <span class="w-6 h-6 bg-blue-600 text-white rounded-full flex items-center justify-center flex-shrink-0 text-sm">1</span>
+                                    <span class="text-gray-700">Meningkatkan kualitas pelayanan publik yang cepat, mudah, dan transparan</span>
+                                </li>
+                                <li class="flex gap-3">
+                                    <span class="w-6 h-6 bg-blue-600 text-white rounded-full flex items-center justify-center flex-shrink-0 text-sm">2</span>
+                                    <span class="text-gray-700">Mengembangkan potensi ekonomi desa berbasis pertanian, UMKM, dan pariwisata</span>
+                                </li>
+                                <li class="flex gap-3">
+                                    <span class="w-6 h-6 bg-blue-600 text-white rounded-full flex items-center justify-center flex-shrink-0 text-sm">3</span>
+                                    <span class="text-gray-700">Meningkatkan infrastruktur desa untuk mendukung pembangunan</span>
+                                </li>
+                                <li class="flex gap-3">
+                                    <span class="w-6 h-6 bg-blue-600 text-white rounded-full flex items-center justify-center flex-shrink-0 text-sm">4</span>
+                                    <span class="text-gray-700">Memperkuat nilai-nilai gotong royong, adat istiadat, dan kearifan lokal</span>
+                                </li>
+                                <li class="flex gap-3">
+                                    <span class="w-6 h-6 bg-blue-600 text-white rounded-full flex items-center justify-center flex-shrink-0 text-sm">5</span>
+                                    <span class="text-gray-700">Mewujudkan masyarakat yang sehat, cerdas, dan berakhlak mulia</span>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-6">
+                    <!-- Demografi -->
+                    <div class="bg-white rounded-xl shadow-sm p-6">
+                        <h3 class="text-xl font-bold mb-4 text-gray-900 flex items-center gap-2">
+                            <i class="fas fa-chart-pie text-green-600"></i>
+                            Demografi Desa
+                        </h3>
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-center pb-3 border-b">
+                                <span class="text-gray-600">Luas Wilayah</span>
+                                <span class="font-semibold text-gray-900">[XX] Ha</span>
+                            </div>
+                            <div class="flex justify-between items-center pb-3 border-b">
+                                <span class="text-gray-600">Jumlah Penduduk</span>
+                                <span class="font-semibold text-gray-900">[XXXX] Jiwa</span>
+                            </div>
+                            <div class="flex justify-between items-center pb-3 border-b">
+                                <span class="text-gray-600">Laki-laki</span>
+                                <span class="font-semibold text-gray-900">[XXXX] Jiwa</span>
+                            </div>
+                            <div class="flex justify-between items-center pb-3 border-b">
+                                <span class="text-gray-600">Perempuan</span>
+                                <span class="font-semibold text-gray-900">[XXXX] Jiwa</span>
+                            </div>
+                            <div class="flex justify-between items-center pb-3 border-b">
+                                <span class="text-gray-600">Jumlah KK</span>
+                                <span class="font-semibold text-gray-900">[XXXX] KK</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-600">Dusun/RW/RT</span>
+                                <span class="font-semibold text-gray-900">[X] Dusun / [XX] RW / [XX] RT</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Batas Wilayah -->
+                    <div class="bg-white rounded-xl shadow-sm p-6">
+                        <h3 class="text-xl font-bold mb-4 text-gray-900 flex items-center gap-2">
+                            <i class="fas fa-map-marked-alt text-green-600"></i>
+                            Batas Wilayah
+                        </h3>
+                        <div class="space-y-3">
+                            <div>
+                                <p class="text-sm text-gray-500 mb-1">Sebelah Utara</p>
+                                <p class="font-medium text-gray-900">Desa [Nama Desa Tetangga]</p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-500 mb-1">Sebelah Timur</p>
+                                <p class="font-medium text-gray-900">Desa [Nama Desa Tetangga]</p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-500 mb-1">Sebelah Selatan</p>
+                                <p class="font-medium text-gray-900">Desa [Nama Desa Tetangga]</p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-500 mb-1">Sebelah Barat</p>
+                                <p class="font-medium text-gray-900">Desa [Nama Desa Tetangga]</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Potensi Desa -->
+                    <div class="bg-white rounded-xl shadow-sm p-6">
+                        <h3 class="text-xl font-bold mb-4 text-gray-900 flex items-center gap-2">
+                            <i class="fas fa-seedling text-green-600"></i>
+                            Potensi Desa
+                        </h3>
+                        <ul class="space-y-2">
+                            <li class="flex items-center gap-2 text-gray-700">
+                                <i class="fas fa-check-circle text-green-600"></i>
+                                Pertanian & Perkebunan
+                            </li>
+                            <li class="flex items-center gap-2 text-gray-700">
+                                <i class="fas fa-check-circle text-green-600"></i>
+                                Peternakan
+                            </li>
+                            <li class="flex items-center gap-2 text-gray-700">
+                                <i class="fas fa-check-circle text-green-600"></i>
+                                UMKM & Kerajinan
+                            </li>
+                            <li class="flex items-center gap-2 text-gray-700">
+                                <i class="fas fa-check-circle text-green-600"></i>
+                                Wisata Alam
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-green-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="lg:col-span-2">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center">
+                            <i class="fas fa-tree text-green-700 text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold">DESA Desa Slendro</h3>
+                            <p class="text-green-200 text-sm">Kec. Gesi, Kab. Sragen</p>
+                        </div>
+                    </div>
+                    <p class="text-green-100 mb-4 max-w-md">
+                        Website resmi Pemerintah Desa Desa Slendro sebagai media informasi, transparansi, dan pelayanan publik untuk masyarakat.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 bg-white/10 hover:bg-white/20 rounded-lg flex items-center justify-center transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-white/10 hover:bg-white/20 rounded-lg flex items-center justify-center transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-white/10 hover:bg-white/20 rounded-lg flex items-center justify-center transition">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Menu Cepat</h4>
+                    <ul class="space-y-2">
+                        <li><a href="profil.html" class="text-green-100 hover:text-white transition">Profil Desa</a></li>
+                        <li><a href="pemerintahan.html" class="text-green-100 hover:text-white transition">Pemerintahan</a></li>
+                        <li><a href="layanan.html" class="text-green-100 hover:text-white transition">Layanan Desa</a></li>
+                        <li><a href="berita.html" class="text-green-100 hover:text-white transition">Berita</a></li>
+                        <li><a href="galeri.html" class="text-green-100 hover:text-white transition">Galeri</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Kontak</h4>
+                    <ul class="space-y-3">
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-map-marker-alt mt-1 text-green-300"></i>
+                            <span class="text-green-100">Kantor Desa Desa Slendro, [Alamat Lengkap]</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fas fa-phone text-green-300"></i>
+                            <span class="text-green-100">[Nomor Telepon]</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fas fa-envelope text-green-300"></i>
+                            <span class="text-green-100">[Email Desa]</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-green-800 mt-8 pt-8 text-center">
+                <p class="text-green-200">&copy; 2025 Website Desa Desa Slendro. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
